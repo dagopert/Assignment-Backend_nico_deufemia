@@ -1,7 +1,39 @@
 # Projekt:
 ##<img src="http://www.deineschmerzgrenze.at/images/logo.png" width="75px" height="75px">Deine Schmerzgrenze.at
 
-### Table PollPool in MySQL:
+### PROCEDURE in Ruby on Rails:
+1. *Determine Models*
+  1. Table "Polls"
+    * and all of it´s columns and types
+  2. Table "Categories"
+    * and all of it´s columns and types
+2. *Create Tables/Models*
+  * Table "Polls": >rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
+  * Table "Categories": >rails generate scaffold Category name
+3. *Determine Relationships, Dependencies and Validations*
+  1. Table "Categories" 1:N Table "Polls"
+    1. Table "Polls" >belongs_to  :category
+    2. Table "Categories" >has_many    :polls
+    3. Dependency:  >dependent: :destroy
+  2. Validations
+    * category.rb >validates   :name,  presence:   true
+    * poll.rb
+      ```ruby
+      validates   :category_id, presence: true
+      validates   :explicit,   presence: true
+      validates   :question,   presence: true
+      validates   :genderdep,   presence: true
+      validates   :flag,   presence: true
+      ```
+  3. Special: Enums (used in Table "Polls" multiply)
+  ```ruby
+  enum genderdep: [ :independent, :male, :female ]
+  enum flag:      [ :waiting, :normal, :reported, :blocked ]
+  ```
+4. *Fill Tables / Seed Data*
+  * seeds.rb
+
+### Table "PollPool" in MySQL:
 
 ```sql
 CREATE TABLE IF NOT EXISTS `PollPool` (
@@ -15,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `PollPool` (
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 ```
 
-### Table Polls in Ruby on Rails:
+### Table "Polls" in Ruby on Rails:
 
 Command: rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
 
