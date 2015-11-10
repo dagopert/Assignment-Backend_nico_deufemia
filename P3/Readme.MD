@@ -4,6 +4,7 @@
 ### Table PollPool in MySQL:
 
 CREATE TABLE IF NOT EXISTS `PollPool` (
+
   `ID` int(10) unsigned NOT NULL,
   `CATEGORYID` tinyint(4) unsigned NOT NULL,
   `gender-dependency` enum('N','M','F','') NOT NULL DEFAULT 'N',
@@ -14,8 +15,10 @@ CREATE TABLE IF NOT EXISTS `PollPool` (
 
 ### Table Polls in Ruby on Rails:
 
-Command: rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
-Migration:
+#Command: rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
+
+#Migration:
+
   class CreatePolls < ActiveRecord::Migration
     def change
       create_table :polls do |t|
@@ -29,7 +32,9 @@ Migration:
   end
   end
   end
-Model:
+
+#Model:
+
 class Poll < ActiveRecord::Base
                            belongs_to  :category
 
@@ -46,13 +51,16 @@ end
 ### Table PollCategories in MySQL:
 
 CREATE TABLE IF NOT EXISTS `PollCategories` (
+
   `ID` tinyint(4) unsigned NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 ### Table Categories in Ruby on Rails:
-rails generate scaffold Category name
-Migration:
+
+#Command: rails generate scaffold Category name
+
+#Migration:
 class CreateCategories < ActiveRecord::Migration
                                      def change
                                        create_table :categories do |t|
@@ -62,7 +70,9 @@ t.timestamps null: false
 end
 end
 end
-Model:
+
+#Model:
+
 class Category < ActiveRecord::Base
                                has_many    :polls, dependent: :destroy
                                validates   :name,  presence:   true
@@ -71,7 +81,8 @@ end
 
 ### Seed Table (befüllen) in Ruby on Rails:
 
-editting seeds.rb:
+#editting seeds.rb:
+
   Poll.delete_all
   Poll.create!( id: 1, category_id: 1, genderdep: 0, explicit: 0, question: "Für wie viel Geld würdest du deine Religion aufgeben?", flag: 0)
   Poll.create!( id: 2, category_id: 1, genderdep: 0, explicit: 0, question: "Für wie viel Geld würdest du dein Haustier verkaufen?", flag: 0)
@@ -85,6 +96,7 @@ editting seeds.rb:
   Category.create!( id: 2, name: "Ethic" )
   Category.create!( id: 3, name: "Ugly" )
   Category.create!( id: 4, name: "Scary" )
+
 
 ### Various Calls in Ruby and SQL-Equivalent:
 
