@@ -2,21 +2,27 @@
 ##<img src="http://www.deineschmerzgrenze.at/images/logo.png" width="75px" height="75px">Deine Schmerzgrenze.at
 
 ### PROCEDURE in Ruby on Rails:
-1. *Determine Models*
-  1. Table "Polls"
+1. **Determine Models**
+  1. Table *"Polls"*
     * and all of it´s columns and types
-  2. Table "Categories"
+  2. Table *"Categories"*
     * and all of it´s columns and types
-2. *Create Tables/Models*
-  * Table "Polls": >rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
-  * Table "Categories": >rails generate scaffold Category name
-3. *Determine Relationships, Dependencies and Validations*
-  1. Table "Categories" 1:N Table "Polls"
-    1. Table "Polls" >belongs_to  :category
-    2. Table "Categories" >has_many    :polls
-    3. Dependency:  >dependent: :destroy
+2. **Create Tables/Models**
+  * Table *"Polls"*:
+      >rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
+  * Table *"Categories"*:
+      >rails generate scaffold Category name
+3. **Determine Relationships, Dependencies and Validations**
+  1. Table *"Categories"* **1:N** Table *"Polls"*
+    1. Table *"Polls"*
+      >belongs_to  :category
+    2. Table *"Categories"*
+      >has_many    :polls
+    3. Dependency:
+      >dependent: :destroy
   2. Validations
-    * category.rb >validates   :name,  presence:   true
+    * category.rb
+      >validates   :name,  presence:   true
     * poll.rb
       ```ruby
       validates   :category_id, presence: true
@@ -30,7 +36,7 @@
   enum genderdep: [ :independent, :male, :female ]
   enum flag:      [ :waiting, :normal, :reported, :blocked ]
   ```
-4. *Fill Tables / Seed Data*
+4. **Fill Tables / Seed Data**
   * seeds.rb
 
 ### Table "PollPool" in MySQL:
