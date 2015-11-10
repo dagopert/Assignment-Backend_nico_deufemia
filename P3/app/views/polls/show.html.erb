@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Categoryid:</strong>
+  <%= @poll.categoryid %>
+</p>
+
+<p>
+  <strong>Gender-dependency:</strong>
+  <%= @poll.genderdep %>
+</p>
+
+<p>
+  <strong>Explicit:</strong>
+  <%= @poll.explicit %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @poll.question %>
+</p>
+
+<p>
+  <strong>Flag:</strong>
+  <%= @poll.flag %>
+</p>
+
+<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<%= link_to 'Back', polls_path %>
