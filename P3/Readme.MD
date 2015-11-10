@@ -9,20 +9,20 @@
     * and all of it´s columns and types
 2. **Create Tables/Models**
   * Table *"Polls"*:
-      >rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
+      > rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
   * Table *"Categories"*:
-      >rails generate scaffold Category name
+      > rails generate scaffold Category name
 3. **Determine Relationships, Dependencies and Validations**
   1. Table *"Categories"* **1:N** Table *"Polls"*
     1. Table *"Polls"*
-      >belongs_to  :category
+      > belongs_to  :category
     2. Table *"Categories"*
-      >has_many    :polls
+      > has_many    :polls
     3. Dependency:
-      >dependent: :destroy
+      > dependent: :destroy
   2. Validations
     * category.rb
-      >validates   :name,  presence:   true
+      > validates   :name,  presence:   true
     * poll.rb
       ```ruby
       validates   :category_id, presence: true
