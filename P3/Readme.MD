@@ -2,6 +2,7 @@
 ##<img src="http://www.deineschmerzgrenze.at/images/logo.png" width="75px" height="75px">Deine Schmerzgrenze.at
 
 ### Table PollPool in MySQL:
+
 CREATE TABLE IF NOT EXISTS `PollPool` (
   `ID` int(10) unsigned NOT NULL,
   `CATEGORYID` tinyint(4) unsigned NOT NULL,
@@ -12,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `PollPool` (
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 ### Table Polls in Ruby on Rails:
+
 Command: rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
 Migration:
   class CreatePolls < ActiveRecord::Migration
@@ -42,6 +44,7 @@ enum flag:      [ :waiting, :normal, :reported, :blocked ]
 end
 
 ### Table PollCategories in MySQL:
+
 CREATE TABLE IF NOT EXISTS `PollCategories` (
   `ID` tinyint(4) unsigned NOT NULL,
   `name` varchar(255) NOT NULL
@@ -67,6 +70,7 @@ end
 
 
 ### Seed Table (befüllen) in Ruby on Rails:
+
 editting seeds.rb:
   Poll.delete_all
   Poll.create!( id: 1, category_id: 1, genderdep: 0, explicit: 0, question: "Für wie viel Geld würdest du deine Religion aufgeben?", flag: 0)
@@ -83,6 +87,7 @@ editting seeds.rb:
   Category.create!( id: 4, name: "Scary" )
 
 ### Various Calls in Ruby and SQL-Equivalent:
+
 c = Category.find(1)    SELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1 [["id", 1]]
 => #<Category id: 1, name: "Standard", created_at: "2015-11-10 23:03:52", updated_at: "2015-11-10 23:03:52">
 
