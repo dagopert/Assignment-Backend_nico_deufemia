@@ -24,12 +24,12 @@
     * category.rb
       > validates   :name,  presence:   true
     * poll.rb
-      ```ruby
-      validates   :category_id, presence: true
-      validates   :explicit,   presence: true
-      validates   :question,   presence: true
-      validates   :genderdep,   presence: true
-      validates   :flag,   presence: true
+    ```ruby
+    validates   :category_id, presence: true
+    validates   :explicit,   presence: true
+    validates   :question,   presence: true
+    validates   :genderdep,   presence: true
+    validates   :flag,   presence: true
       ```
   3. Special: Enums (used in Table "Polls" multiply)
   ```ruby
