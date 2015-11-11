@@ -1,5 +1,5 @@
 # Projekt:
-##<img src="http://www.deineschmerzgrenze.at/images/logo.png" width="75px" height="75px">Deine Schmerzgrenze.at
+##<img src="http://www.deineschmerzgrenze.at/images/logo.png" width="100px" height="100px">Deine Schmerzgrenze.at
 
 ### PROCEDURE in Ruby on Rails:
 1. **Determine Models**
