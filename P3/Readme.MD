@@ -39,7 +39,7 @@
 4. **Fill Tables / Seed Data**
   * seeds.rb
 
-### Table "PollPool" in MySQL:
+### Table *"PollPool"* in **MySQL**:
 
 ```sql
 CREATE TABLE IF NOT EXISTS `PollPool` (
@@ -53,11 +53,13 @@ CREATE TABLE IF NOT EXISTS `PollPool` (
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 ```
 
-### Table "Polls" in Ruby on Rails:
+### Table *"Polls"* in **Ruby on Rails**:
 
-Command: rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
-
-Migration:
+**Command:**
+```ruby
+rails generate scaffold Poll categoryid:integer gender-dependeny:integer explicit:integer question flag:integer
+```
+**Migration:**
 ```ruby
   class CreatePolls < ActiveRecord::Migration
     def change
@@ -74,7 +76,7 @@ Migration:
   end
 ```
 
-Model:
+**Model:**
 ```ruby
 class Poll < ActiveRecord::Base
                            belongs_to  :category
@@ -90,7 +92,7 @@ enum flag:      [ :waiting, :normal, :reported, :blocked ]
 end
 ```
 
-### Table PollCategories in MySQL:
+### Table *"PollCategories"* in **MySQL**:
 
 ```sql
 CREATE TABLE IF NOT EXISTS `PollCategories` (
@@ -100,11 +102,14 @@ CREATE TABLE IF NOT EXISTS `PollCategories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 ```
 
-### Table Categories in Ruby on Rails:
+### Table *"Categories"* in **Ruby on Rails**:
 
-Command: rails generate scaffold Category name
+**Command:**
+```ruby
+rails generate scaffold Category name
+```
 
-Migration:
+**Migration:**
 ```ruby
 class CreateCategories < ActiveRecord::Migration
                                      def change
@@ -117,7 +122,7 @@ end
 end
 ```
 
-Model:
+**Model:**
 ```ruby
 class Category < ActiveRecord::Base
                                has_many    :polls, dependent: :destroy
@@ -125,9 +130,9 @@ class Category < ActiveRecord::Base
 end
 ```
 
-### Seed Table (befüllen) in Ruby on Rails:
+### **Seed Tables** *(befüllen)* in **Ruby on Rails**:
 
-editting seeds.rb:
+**editting seeds.rb:**
 ```ruby
   Poll.delete_all
   Poll.create!( id: 1, category_id: 1, genderdep: 0, explicit: 0, question: "Für wie viel Geld würdest du deine Religion aufgeben?", flag: 0)
@@ -144,7 +149,7 @@ editting seeds.rb:
   Category.create!( id: 4, name: "Scary" )
 ```
 
-### Various Calls in Ruby and SQL-Equivalent:
+### **Various Calls** in **Ruby** and **SQL-Equivalent**:
 ```ruby
 c = Category.find(1)    SELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1 [["id", 1]]
 => #<Category id: 1, name: "Standard", created_at: "2015-11-10 23:03:52", updated_at: "2015-11-10 23:03:52">
@@ -182,4 +187,12 @@ SQL (0.0ms)  DELETE FROM "polls" WHERE "polls"."id" = ?  [["id", 7]]
 Poll.last
   Poll Load (0.0ms)  SELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1
 => #<Poll id: 6, category_id: 3, genderdep: 0, explicit: 0, question: "Für wie viel Geld würdest du für immer auswandern?", flag: 0, created_at: "2015-11-10 23:10:34", updated_at: "2015-11-10 23:10:34">
+```
+
+
+```
+By Nicola Deufemia,
+ndeufemia.mmt-b2014@fh-salzburg.ac.at
+Backend-Development
+License: MIT
 ```
