@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BasicZombies</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav>
+  <h2>unschöne Navigation...</h2>
+  <%= link_to 'List of Zombies', zombies_path %>
+  <%= link_to 'List of Tweets', tweets_path %>
+</nav>
+
+<%= yield %>
+
+</body>
+</html>
