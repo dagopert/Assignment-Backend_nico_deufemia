@@ -194,5 +194,5 @@ Poll.last
 By Nicola Deufemia,
 ndeufemia.mmt-b2014@fh-salzburg.ac.at
 Backend-Development
-License: <a href="LICENSE">MIT</a>
+LICENSE: MIT
 ```
