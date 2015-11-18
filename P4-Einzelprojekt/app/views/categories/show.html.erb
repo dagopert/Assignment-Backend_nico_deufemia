@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category Name:</strong>
+  <h3><%= @category.name %></h3>
+</p>
+
+<p>
+    latest 5 Polls in Category;
+    <ul>
+        <% Poll.all.where(Category_id: @category.id).limit(5).each do |poll| %>
+            <li>
+                <%= poll.question %>
+                <%= link_to 'Show', poll %>
+                <%= link_to 'Edit', edit_poll_path(poll) %>
+            </li>
+        <% end %>
+    </ul>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', :back %>

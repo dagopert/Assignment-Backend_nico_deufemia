@@ -1,0 +1,37 @@
+<%= form_for(@poll) do |f| %>
+  <% if @poll.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+
+      <ul>
+      <% @poll.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :genderdep %><br>
+    <%= f.select :genderdep, Poll.genderdeps.keys.to_a %>
+  </div>
+  <div class="field">
+    <%= f.label :explicit %><br>
+    <%= f.select :explicit, [true, false] , prompt: true%>
+  </div>
+  <div class="field">
+    <%= f.label :question %><br>
+    <%= f.text_field :question %>
+  </div>
+  <div class="field">
+    <%= f.label :flag %><br>
+    <%= f.select :flag, Poll.flags.keys.to_a %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
