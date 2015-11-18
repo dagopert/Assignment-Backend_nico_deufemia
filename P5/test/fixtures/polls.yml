@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  categoryid: 1
+  gender-dependency: 1
+  explicit: 1
+  question: MyString
+  flag: 1
+
+two:
+  categoryid: 1
+  gender-dependency: 1
+  explicit: 1
+  question: MyString
+  flag: 1
